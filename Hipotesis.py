@@ -32,4 +32,8 @@ def HipotesisMediaConocidoDesvioInfinito():
         zAlfa = st.norm.ppf(1-alfa)
         cantidad = (((zBeta + zAlfa) * desvio) / X1 - xComparativo) ** 2
 
-    xCritico = xComparativo
+    z = st.norm.ppf(1 - alfa)
+
+    xCritico = xComparativo + z * (desvio / math.sqrt(cantidad))
+
+    
