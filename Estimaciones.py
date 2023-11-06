@@ -1,7 +1,7 @@
 import math
 import scipy.stats as st
 
-import Aux
+import Auxiliares
 
 #ESTIMACIONES
 
@@ -34,7 +34,7 @@ def EstimacionMediaConocidoDesvioInfinito():
         error = z * (desvio / math.sqrt(n))
 
         # Resultado
-        Aux.mostrarResultadosLimites(a, b, alfa)
+        Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -79,7 +79,7 @@ def EstimacionMediaConocidoDesvioFinito():
 
         error = z * (desvio / math.sqrt(n)) * raiz
 
-        Aux.mostrarResultadosLimites(a, b, alfa)
+        Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -123,7 +123,7 @@ def EstimacionMediaDesconocidoDesvioInfinito():
 
         error = t * (estimador_desvio / math.sqrt(n))
 
-        Aux.mostrarResultadosLimites(a, b, alfa)
+        Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -166,7 +166,7 @@ def EstimacionMediaDesconocidoDesvioFinito():
 
         error = t * (estimador_desvio / math.sqrt(n)) * raiz
 
-        Aux.mostrarResultadosLimites(a, b, alfa)
+        Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -203,7 +203,7 @@ def EstimacionVarianza():
         error = (B - A) / 2
         relacion = B / A
 
-        Aux.mostrarResultadosLimites(A, B, alfa)
+        Auxiliares.mostrarResultadosLimites(A, B, alfa)
         print(f"Error muestral: {error:.4f}")
         print(f"Relación B/A: {relacion:.4f}")
 

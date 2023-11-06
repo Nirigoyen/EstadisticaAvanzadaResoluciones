@@ -1,7 +1,7 @@
 import math
 import scipy.stats as st
 
-import Aux
+import Auxiliares
 
 def ComparacionDesvioEstandar():
     print("Cálculo del intervalo de confianza para la razón de varianzas")
@@ -35,7 +35,7 @@ def ComparacionDesvioEstandar():
         b = round(b + 0.0001, 4)
 
     # Resultado
-    Aux.mostrarResultadosLimites(a, b, alfa)
+    Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
 
 
@@ -100,7 +100,7 @@ def ComparacionVarianzaMuestral():
         b = round(b + 0.0001, 4)
 
     # Resultado
-    Aux.mostrarResultadosLimites(a, b, alfa)
+    Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
     # Preguntar si desea calcular n
     opcion = input("\n¿Desea calcular n? (s/n): ")
