@@ -66,6 +66,15 @@ def EstimacionMediaConocidoDesvioInfinito():
         a = prom_datos - z * (desvio / math.sqrt(n))
         b = prom_datos + z * (desvio / math.sqrt(n))
 
+        # Redondeo de límites
+        a = math.floor(a * 10000) / 10000
+        b = round(b, 4)
+
+        if b - int(b) < 0.0001:
+            b = int(b) + 1
+        else:
+            b = round(b, 4)
+
         error = z * (desvio / math.sqrt(n))
 
         # Resultado
@@ -103,6 +112,15 @@ def EstimacionMediaConocidoDesvioFinito():
         a = prom_datos - z * (desvio / math.sqrt(n)) * raiz
         b = prom_datos + z * (desvio / math.sqrt(n)) * raiz
 
+        # Redondeo de límites
+        a = math.floor(a * 10000) / 10000
+        b = round(b, 4)
+
+        if b - int(b) < 0.0001:
+            b = int(b) + 1
+        else:
+            b = round(b, 4)
+
         error = z * (desvio / math.sqrt(n)) * raiz
 
         mostrarResultadosLimites(a, b, alfa)
@@ -138,6 +156,15 @@ def EstimacionMediaDesconocidoDesvioInfinito():
         a = prom_datos - t * (estimador_desvio / math.sqrt(n))
         b = prom_datos + t * (estimador_desvio / math.sqrt(n))
 
+        # Redondeo de límites
+        a = math.floor(a * 10000) / 10000
+        b = round(b, 4)
+
+        if b - int(b) < 0.0001:
+            b = int(b) + 1
+        else:
+            b = round(b, 4)
+
         error = t * (estimador_desvio / math.sqrt(n))
 
         mostrarResultadosLimites(a, b, alfa)
@@ -171,6 +198,15 @@ def EstimacionMediaDesconocidoDesvioFinito():
 
         a = prom_datos - t * (estimador_desvio / math.sqrt(n)) * raiz
         b = prom_datos + t * (estimador_desvio / math.sqrt(n)) * raiz
+
+        # Redondeo de límites
+        a = math.floor(a * 10000) / 10000
+        b = round(b, 4)
+
+        if b - int(b) < 0.0001:
+            b = int(b) + 1
+        else:
+            b = round(b, 4)
 
         error = t * (estimador_desvio / math.sqrt(n)) * raiz
 
