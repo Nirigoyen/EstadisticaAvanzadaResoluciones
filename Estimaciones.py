@@ -236,6 +236,8 @@ def EstimacionProcesoBernoulli():
 
     b = 1 / (1 + (n - r) / denominador)
 
+    ErrorMuestral = (b - a) /2
+
     # Redondeo de límites
     a = math.floor(a * 10000) / 10000
     b = round(b, 4)
@@ -250,4 +252,21 @@ def EstimacionProcesoBernoulli():
     print(f"Valor de B: {a:.4f}")
     print(f"\nResultado Final:\nP({a:.4f} ≤ p ≤ {b:.4f}) = {100 - 100 * alfa}%")
 
-    # Queda calculo de N por Aproximacion Poisson/Normal
+    if n*p >= 10 and n*(1-p) >= 10:
+        Aproximacion = "Normal"
+    elif p <= 0.05:
+        Aproximacion = "Poisson"
+    else:  # Criterio de Mermoz
+        if p <= 0.5:
+            nComp = (0.23 * (1-p)^2)/(p^3)
+        else:
+            nComp = (0.23 * p^2)/(1-p)^3
+        if n >= nComp:
+            Aproximacion = "Poisson"
+        else:
+            Aproximacion = "Normal"
+
+    if Aproximacion == "Normal":
+        NuevoN = ((((st.norm.ppf(1 - alfa / 2)) / ErrorMuestral)) * (p * (1-p))) + 1
+    else:
+        NuevoN =  + 1

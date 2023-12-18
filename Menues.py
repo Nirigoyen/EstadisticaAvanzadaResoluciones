@@ -151,6 +151,7 @@ def MenuEstimacionesVarianza():
             print("\n" * 100)
 
 def MenuEstimacionesBernoulli():
-    print("WIP")
+    Estimaciones.EstimacionProcesoBernoulli()
+
 
 
