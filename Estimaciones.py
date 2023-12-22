@@ -17,7 +17,12 @@ def EstimacionMediaConocidoDesvioInfinito():
 
         n = int(input("Ingresa la cantidad de observaciones (n): "))
 
-        z = st.norm.ppf(1 - alfa / 2)
+        params = int(input("Ingresa los limites que quiere calcular (a/b/ambos): "))
+
+        if params == "a" or params == "b":
+            z = st.norm.ppf(1 - alfa)
+        else:
+            z = st.norm.ppf(1 - alfa / 2)
 
         a = prom_datos - z * (desvio / math.sqrt(n))
         b = prom_datos + z * (desvio / math.sqrt(n))
@@ -31,10 +36,11 @@ def EstimacionMediaConocidoDesvioInfinito():
         else:
             b = round(b, 4)
 
-        error = z * (desvio / math.sqrt(n))
-
         # Resultado
         Auxiliares.mostrarResultadosLimites(a, b, alfa)
+
+        z = st.norm.ppf(1 - alfa / 2)
+        error = z * (desvio / math.sqrt(n))
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -61,7 +67,14 @@ def EstimacionMediaConocidoDesvioFinito():
 
         prom_datos = float(input("Ingresa el promedio obtenido (X̅): "))
 
-        z = st.norm.ppf(1 - alfa / 2)
+        params = int(input("Ingresa los limites que quiere calcular (a/b/ambos): "))
+
+        if params == "a" or params == "b":
+            z = st.norm.ppf(1 - alfa)
+        else:
+            z = st.norm.ppf(1 - alfa / 2)
+
+
 
         raiz = math.sqrt((N - n) / N)
 
@@ -77,10 +90,10 @@ def EstimacionMediaConocidoDesvioFinito():
         else:
             b = round(b, 4)
 
-        error = z * (desvio / math.sqrt(n)) * raiz
-
         Auxiliares.mostrarResultadosLimites(a, b, alfa)
 
+        z = st.norm.ppf(1 - alfa / 2)
+        error = z * (desvio / math.sqrt(n)) * raiz
         print(f"Error muestral actual: {error:.4f}")
 
         nuevo_error = input("Ingresa nuevo error muestral (dejar en blanco para terminar): ")
@@ -107,7 +120,13 @@ def EstimacionMediaDesconocidoDesvioInfinito():
 
         prom_datos = float(input("Ingresa el promedio obtenido (X̅): "))
 
-        t = st.t.ppf(1 - alfa / 2, n - 1)
+        params = int(input("Ingresa los limites que quiere calcular (a/b/ambos): "))
+
+        if params == "a" or params == "b":
+            t = st.t.ppf(1 - alfa, n - 1)
+        else:
+            t = st.t.ppf(1 - alfa / 2, n - 1)
+
 
         a = prom_datos - t * (estimador_desvio / math.sqrt(n))
         b = prom_datos + t * (estimador_desvio / math.sqrt(n))
@@ -121,9 +140,10 @@ def EstimacionMediaDesconocidoDesvioInfinito():
         else:
             b = round(b, 4)
 
-        error = t * (estimador_desvio / math.sqrt(n))
-
         Auxiliares.mostrarResultadosLimites(a, b, alfa)
+
+        t = st.t.ppf(1 - alfa / 2, n - 1)
+        error = t * (estimador_desvio / math.sqrt(n))
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -148,7 +168,12 @@ def EstimacionMediaDesconocidoDesvioFinito():
 
         prom_datos = float(input("Ingresa el promedio obtenido (X̅): "))
 
-        t = st.t.ppf(1 - alfa / 2, n - 1)
+        params = int(input("Ingresa los limites que quiere calcular (a/b/ambos): "))
+
+        if params == "a" or params == "b":
+            t = st.t.ppf(1 - alfa, n - 1)
+        else:
+            t = st.t.ppf(1 - alfa / 2, n - 1)
 
         raiz = math.sqrt((N - n) / N)
 
@@ -163,10 +188,11 @@ def EstimacionMediaDesconocidoDesvioFinito():
             b = int(b) + 1
         else:
             b = round(b, 4)
-
-        error = t * (estimador_desvio / math.sqrt(n)) * raiz
-
         Auxiliares.mostrarResultadosLimites(a, b, alfa)
+
+
+        t = st.t.ppf(1 - alfa / 2, n - 1)
+        error = t * (estimador_desvio / math.sqrt(n)) * raiz
 
         print(f"Error muestral actual: {error:.4f}")
 
@@ -193,6 +219,8 @@ def EstimacionVarianza():
         n = int(input("Ingresa el tamaño muestral (n): "))
 
         alfa = float(input("Ingresa el nivel de significancia (α): "))
+
+        params = int(input("Ingresa los limites que quiere calcular (a/b/ambos): "))
 
         chi_inf = st.chi2.ppf(alfa / 2, n - 1)
         chi_sup = st.chi2.ppf(1 - alfa / 2, n - 1)
